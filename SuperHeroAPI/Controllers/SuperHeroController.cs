@@ -34,7 +34,7 @@ namespace SuperHeroAPI.Controllers
         {
             _context.SuperHeroes.Add(superHero);
             await _context.SaveChangesAsync();
-            return Created("created", _context.SuperHeroes.ToListAsync());
+            return Created("created", await _context.SuperHeroes.ToListAsync());
         }
 
         [HttpPut]
@@ -49,7 +49,7 @@ namespace SuperHeroAPI.Controllers
             hero.Place = request.Place;
 
             await _context.SaveChangesAsync();
-            return Ok(_context.SuperHeroes.ToListAsync());
+            return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
         [HttpDelete("{id}")]
